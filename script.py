@@ -1,11 +1,15 @@
 
 import yfinance as yahooFinance
- 
-facebook = yahooFinance.Ticker("META")
+import pandas as pd
 
-data = facebook.history(period="max")
-data.to_csv("facebook_meta_history.csv")
+ibm = yahooFinance.Ticker("IBM")
+
+data = ibm.history(period="max")
+data.to_csv("ibm.csv")
 
 
 
 
+ibm_data = pd.read_csv("ibm.csv")
+
+print(ibm_data.shape[0])

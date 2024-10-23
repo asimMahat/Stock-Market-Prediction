@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
+import joblib
 
 file_path = 'dataset/ibm.csv'  
 data = pd.read_csv(file_path)
@@ -18,7 +19,7 @@ def preprocess_data(data):
     data_close = data_close.reshape(-1, 1) 
     scaler = MinMaxScaler(feature_range=(0, 1))
     data_scaled = scaler.fit_transform(data_close)
-    # joblib.dump(scaler, 'scaler.pkl')
+    joblib.dump(scaler, 'scaler.pkl')
     return data_scaled,scaler
 
 def create_sequences(data, time_step):

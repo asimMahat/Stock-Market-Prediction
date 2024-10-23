@@ -7,6 +7,7 @@ from tensorflow.keras.models import load_model
 from data_preprocessing import X_train, y_train,time_step
 # from tensorflow.keras.models import save_model
 
+
 # Define the training function
 def train_lstm_model(X_train, y_train, time_step, batch_size=32, epochs=30, save_model_path='models/lstm_model.keras'):
     # LSTM model architecture
@@ -37,7 +38,7 @@ def load_trained_model(model_path='models/lstm_model.keras'):
     else:
         raise FileNotFoundError(f"The model file {model_path} does not exist.")
 
-
-train_lstm_model(X_train,y_train,time_step)
+if __name__ == "__main__":
+    train_lstm_model(X_train,y_train,time_step)
 
 

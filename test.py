@@ -6,28 +6,24 @@ from train import load_trained_model
 import joblib
 import os
 
-
 scaler = joblib.load('scaler.pkl')
 
+model_choice = input("Do you want to test on RNN , GRU or LSTM? (Type 'RNN','GRU' or 'LSTM' ): ").strip().upper()
 
-model_choice = input("Do you want to test on LSTM or RNN? (Type 'LSTM' or 'RNN'): ").strip().upper()
-
-
-if model_choice == 'LSTM':
-    model_path = 'models/lstm_model.keras'
-elif model_choice == 'RNN':
+if model_choice == 'RNN':
     model_path = 'models/rnn_model.keras'
+elif model_choice == 'GRU':
+    model_path = "models/gru_model.keras"
+elif model_choice == 'LSTM':
+    model_path = 'models/lstm_model.keras'
 else:
     raise ValueError("Invalid input! Please type 'LSTM' or 'RNN'.")
-
 
 if not os.path.exists(model_path):
     raise FileNotFoundError(f"The model file {model_path} does not exist. Please train the model first.")
 
-
 model = load_trained_model(model_path)
 print(f"Testing on model: {model_choice}")
-
 
 predicted_stock_price = model.predict(X_test)
 

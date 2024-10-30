@@ -35,7 +35,7 @@ print(data_scaled)
 time_step = 60
 X, y = create_sequences(data_scaled,time_step)
 
-
+X = X.reshape(X.shape[0], X.shape[1], 1)
 train_size = int(len(X) * 0.8)
 X_train, X_test = X[:train_size], X[train_size:]
 y_train, y_test = y[:train_size], y[train_size:]

@@ -8,14 +8,16 @@ import os
 
 scaler = joblib.load('scaler.pkl')
 
-model_choice = input("Do you want to test on RNN , GRU or LSTM? (Type 'RNN','GRU' or 'LSTM' ): ").strip().upper()
+model_choice = input("Do you want to test on RNN , GRU , Single Layer LSTM or Multi Layer LSTM? (Type 'RNN','GRU' ,'S_LSTM', 'M_LSTM' ): ").strip().upper()
 
 if model_choice == 'RNN':
     model_path = 'models/rnn_model.keras'
 elif model_choice == 'GRU':
     model_path = "models/gru_model.keras"
-elif model_choice == 'LSTM':
-    model_path = 'models/lstm_model.keras'
+if model_choice == 'S_LSTM':
+    model_path = 'models/lstm_model_single_layer.keras'
+elif model_choice == 'M_LSTM':
+    model_path = "models/lstm_model_multi_layer.keras"
 else:
     raise ValueError("Invalid input! Please type 'LSTM' or 'RNN'.")
 

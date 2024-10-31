@@ -2,3 +2,5 @@
 __pycache__
 *.pkl
 .vscode
+.ipynb_checkpoints
+models/

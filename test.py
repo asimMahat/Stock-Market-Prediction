@@ -16,7 +16,11 @@ if model_choice == 'RNN':
 elif model_choice == 'GRU':
     model_path = "models/gru_model.keras"
 elif model_choice == 'S_LSTM':
+<<<<<<< Updated upstream
     model_path = 'models/lstm_model_single_layer_withoutValidation.keras'
+=======
+    model_path = 'models/lstm_model_single_layer.keras'
+>>>>>>> Stashed changes
 elif model_choice == 'M_LSTM':
     model_path = "models/lstm_model_multi_layer.keras"
 else:
@@ -29,8 +33,6 @@ model = load_trained_model(model_path)
 print(f"Testing on model: {model_choice}")
 
 predicted_stock_price = model.predict(X_test)
-
-
 predicted_stock_price_original = scaler.inverse_transform(predicted_stock_price)
 y_test_actual = scaler.inverse_transform(y_test.reshape(-1, 1))
 

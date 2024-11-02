@@ -5,7 +5,7 @@ from tensorflow.keras.callbacks import ModelCheckpoint
 from tensorflow.keras.models import load_model
 from data_preprocessing import X_train, y_train,time_step
 
-def train_lstm_single_layer(X_train, y_train, time_step, batch_size=32, epochs=30, save_model_path='models/lstm_model_single_layer.keras'):
+def train_lstm_single_layer(X_train, y_train, time_step, batch_size=32, epochs=30, save_model_path='models/lstm_model_single_layer_withoutValidation.keras'):
     model = Sequential()
     model.add(LSTM(units=50, return_sequences=False, input_shape=(time_step, 1)))
     model.add(Dropout(0.2))
@@ -32,7 +32,7 @@ def train_lstm_multi_layer(X_train, y_train, time_step, batch_size=32, epochs=30
     
     model.compile(optimizer='adam', loss='mean_squared_error')
     checkpoint = ModelCheckpoint(save_model_path, monitor='loss', save_best_only=True, mode='min', verbose=1)
-    model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, callbacks=[checkpoint])
+    model.fit(X_train, y_train, validation_split=0.2, batch_size=batch_size, epochs=epochs, callbacks=[checkpoint])
 
     model.save(save_model_path)
     print(f"Model saved to {save_model_path}")
@@ -50,7 +50,7 @@ def train_rnn_model(X_train, y_train, time_step, batch_size=32, epochs=30, save_
     
     model.compile(optimizer='adam', loss='mean_squared_error')
     checkpoint = ModelCheckpoint(save_model_path, monitor='loss', save_best_only=True, mode='min', verbose=1)
-    model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, callbacks=[checkpoint])
+    model.fit(X_train, y_train,validation_split=0.2, batch_size=batch_size, epochs=epochs, callbacks=[checkpoint])
 
     model.save(save_model_path)
     print(f"Model saved to {save_model_path}")
@@ -68,7 +68,7 @@ def train_gru_model(X_train, y_train, time_step, batch_size=32, epochs=30, save_
 
     model.compile(optimizer='adam', loss='mean_squared_error')
     checkpoint = ModelCheckpoint(save_model_path, monitor='loss', save_best_only=True, mode='min', verbose=1)
-    model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, callbacks=[checkpoint])
+    model.fit(X_train, y_train,validation_split=0.2, batch_size=batch_size, epochs=epochs, callbacks=[checkpoint])
 
     model.save(save_model_path)
     print(f"Model saved to {save_model_path}")

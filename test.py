@@ -1,10 +1,11 @@
 # Importing necessary modules
+import os
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 import numpy as np
 from data_preprocessing import X_test, y_test
 from train import load_trained_model
 import joblib
-import os
+
 
 scaler = joblib.load('scaler.pkl')
 
@@ -14,12 +15,12 @@ if model_choice == 'RNN':
     model_path = 'models/rnn_model.keras'
 elif model_choice == 'GRU':
     model_path = "models/gru_model.keras"
-if model_choice == 'S_LSTM':
-    model_path = 'models/lstm_model_single_layer.keras'
+elif model_choice == 'S_LSTM':
+    model_path = 'models/lstm_model_single_layer_withoutValidation.keras'
 elif model_choice == 'M_LSTM':
     model_path = "models/lstm_model_multi_layer.keras"
 else:
-    raise ValueError("Invalid input! Please type 'LSTM' or 'RNN'.")
+    raise ValueError("Invalid input! Please type 'RNN','GRU','S_LSTM' or 'M_LSTM'.")
 
 if not os.path.exists(model_path):
     raise FileNotFoundError(f"The model file {model_path} does not exist. Please train the model first.")

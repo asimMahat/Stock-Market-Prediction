@@ -6,3 +6,4 @@ __pycache__
 models/
 .DS_STORE
 dataset/
+scaler.pkl

@@ -7,3 +7,4 @@ models/
 .DS_STORE
 dataset/
 scaler.pkl
+stock_prediction_results/

@@ -5,3 +5,4 @@ scipy==1.14.1
 tensorflow==2.18.0
 yfinance==0.2.48
 matplotlib==3.9.2
+google-generativeai==0.8.3

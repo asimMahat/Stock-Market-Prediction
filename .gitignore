@@ -7,4 +7,4 @@ models/
 .DS_STORE
 dataset/
 scaler.pkl
-*_results/
+*_results*/
